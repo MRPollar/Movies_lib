@@ -65,12 +65,12 @@ header{
             width: 100%;
             max-width: 350px;
             outline: none;
-            color: $default-color-aqua-opaco;
+            color: $default-color-aqua;
             background-color: transparent;
             border: 0;
             border-bottom: 1px solid $default-color-aqua;
             &::placeholder{
-               color: $default-color-aqua;
+               color: $default-color-aqua-opaco;
             }
          }
          button{
@@ -91,3 +91,46 @@ header{
    }
 }
 
+@media(max-width: 768px){
+   header{
+      .container{
+         flex-wrap: wrap;
+         justify-content: center;
+         .logo{
+            width: 100%;
+            h1{
+               font-size: 23px;
+               margin-bottom: 10px;
+               a{
+                  justify-content: center;
+               }
+            }
+         }
+         form.search{
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            gap: 0;
+   
+            input[type=text],
+            button{
+               padding: 5px 10px;
+            }
+   
+            input[type=text]{
+               width: 100%;
+               border: 1px solid $default-color-aqua;
+               border-radius: 10px;
+               font-size: 16px;
+               &::placeholder{
+                  color: $default-color-aqua-opaco;
+               }
+            }
+            button{
+               display: none;
+            }
+         }
+      }
+   }
+}

@@ -4,7 +4,8 @@ import {
    BsGraphUp,
    BsWallet2,
    BsHourglassSplit,
-   BsFillFileEarmarkTextFill
+   BsFillFileEarmarkTextFill,
+   BsFilm
 } from 'react-icons/bs'
 import Loading from '../components/Loading';
 
@@ -21,7 +22,6 @@ const Movie = () => {
    const getmoviedata = async (url) => {
       const req = await fetch(url);
       const res = await req.json();
-      console.log(res);
       setMovie(res);
    }
    useEffect(() => {
@@ -49,6 +49,17 @@ const Movie = () => {
                      <div className="info">
                         <h2><BsHourglassSplit/>Duration:</h2>
                         <p>0{Math.floor(movie.runtime / 60)}:{movie.runtime % 60} hours</p>
+                     </div>
+                     <div className="info">
+                        <h2><BsFilm/>Genrers:</h2>
+                        <p>{movie.genres.map((genrer, index) => {
+                           if(index === movie.genres.length -1){
+                              return genrer.name+"."
+                           } else {
+                              return genrer.name+", "
+                           }
+
+                        })}</p>
                      </div>
                      <div className="info description">
                         <h2><BsFillFileEarmarkTextFill/>Overview:</h2>

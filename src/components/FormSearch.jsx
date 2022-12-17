@@ -11,16 +11,18 @@ const FormSearch = () => {
 
    const handleSubmit = (e) => {
       e.preventDefault();
+      const searchInput = document.querySelector("#search");
       
       if(!search) return;
-      
       navigate(`/search?q=${search}`);
+
+      searchInput.value = "";
       setSearch("");
    }
 
    return (
       <form className="search" onSubmit={handleSubmit}>
-            <input type='text' placeholder="Busca" onChange={(e) => setSearch(e.target.value)} values={search}/>
+            <input id="search" type='text' placeholder="Search..." onChange={(e) => setSearch(e.target.value)} values={search}/>
             <button type='submit'>
                <BsSearch className='icon_search'/>
             </button>

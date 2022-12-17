@@ -12,8 +12,12 @@
             font-size: 45px;
             font-weight: $font-normal;
             margin: 20px 0;
+            @media (max-width: 768px){
+               font-size: 30px;
+            }
          }
          .info{
+            margin-bottom: 20px;
             h2{
                display: flex;
                align-items: center;
