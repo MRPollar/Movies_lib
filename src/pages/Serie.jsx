@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { AiOutlineFieldNumber } from 'react-icons/ai'
+import { MdSlideshow } from 'react-icons/md';
 import {
-   BsGraphUp,
-   BsWallet2,
-   BsHourglassSplit,
    BsFillFileEarmarkTextFill,
    BsCalendarEvent,
    BsFilm
@@ -12,18 +11,19 @@ import Loading from '../components/Loading';
 
 import '../styles/components/movie.scss';
 
-const searchUrl = import.meta.env.VITE_API;
+const searchUrl = import.meta.env.VITE_API_TV;
 const apiKey = import.meta.env.VITE_API_KEY;
 const apiImg = import.meta.env.VITE_IMG_HIGH;
 
 const Movie = () => {
    const { id } = useParams();
-   const [movie, setMovie] = useState(null);
+   const [serie, setSerie] = useState(null);
 
    const getmoviedata = async (url) => {
       const req = await fetch(url);
       const res = await req.json();
-      setMovie(res);
+      console.log(res);
+      setSerie(res);
    }
    useEffect(() => {
       const movieUrl = `${searchUrl}${id}?api_key=${apiKey}`;
@@ -33,32 +33,28 @@ const Movie = () => {
    return(
       <section className="movie_info">
          <div className="container">
-            {movie === null && <Loading/>}
-            {movie !== null && 
+            {serie === null && <Loading/>}
+            {serie !== null && 
                <>
-                  <img src={`${apiImg}${movie.backdrop_path}`}/>
+                  <img src={`${apiImg}${serie.backdrop_path}`}/>
                   <div className="text">
-                     <h1>{movie.title}</h1>
+                     <h1>{serie.name}</h1>
                      <div className="info">
-                        <h2><BsWallet2/>Budget:</h2>
-                        <p>{movie.budget}</p>
+                        <h2><MdSlideshow/>Seasons:</h2>
+                        <p>{serie.seasons.length > 1 ? serie.seasons.length+" seasons":serie.seasons.length+" season"}</p>
                      </div>
                      <div className="info">
-                        <h2><BsGraphUp/>Revenue:</h2>
-                        <p>{movie.revenue}</p>
+                        <h2><AiOutlineFieldNumber/>Number of episodes:</h2>
+                        <p>{serie.number_of_episodes} episodes</p>
                      </div>
                      <div className="info">
                         <h2><BsCalendarEvent/>Release date:</h2>
-                        <p>{movie.release_date}</p>
-                     </div>
-                     <div className="info">
-                        <h2><BsHourglassSplit/>Duration:</h2>
-                        <p>{Math.floor(movie.runtime / 60) > 10 ? Math.floor(movie.runtime / 60): "0"+Math.floor(movie.runtime / 60)}:{movie.runtime % 60 > 10 ? movie.runtime % 60 : "0"+ movie.runtime % 60} hours</p>
+                        <p>{serie.first_air_date}</p>
                      </div>
                      <div className="info">
                         <h2><BsFilm/>Genre:</h2>
-                        <p>{movie.genres.map((genrer, index) => {
-                           if(index === movie.genres.length -1){
+                        <p>{serie.genres.map((genrer, index) => {
+                           if(index === serie.genres.length -1){
                               return genrer.name+"."
                            } else {
                               return genrer.name+", "
@@ -68,7 +64,7 @@ const Movie = () => {
                      </div>
                      <div className="info description">
                         <h2><BsFillFileEarmarkTextFill/>Overview:</h2>
-                        <p>{movie.overview}</p>
+                        <p>{serie.overview}</p>
                      </div>
                   </div>
                </>

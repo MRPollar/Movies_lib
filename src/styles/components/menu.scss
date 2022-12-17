@@ -1,0 +1,75 @@
+@import '../variables.scss', '../mixins.scss';
+.btn_toggle{
+   width: 40px;
+   height: 40px;
+   cursor: pointer;
+   position: relative;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: 0;
+   background: transparent;
+   &::before,
+   &::after{
+      content: '';
+      position: absolute;
+      width: 23px;
+      height: 2px;
+      transition: .3s;
+   }
+   &::before{
+      transform: translateY(-5px);
+      background-color: $default-color-aqua;
+   }
+   &::after{
+      transform: translateY(5px);
+      background-color: $default-color-aqua-opaco;
+   }
+   &.active{
+      &::before{
+         transform: translateY(0) rotate(-135deg);
+         background-color: $default-color-aqua;
+      }
+      &::after{
+         transform: translateY(0) rotate(135deg);
+         background-color: $default-color-aqua;
+      }
+   }
+}
+
+.menu{
+   position: absolute;
+   top: 63px;
+   left: -400px;
+   width: 100%;
+   max-width: 400px;
+   padding: 40px 0;
+   background-color: $default-color-black;
+   transition: .3s;
+   ul{
+      padding: 0 15px;
+      li{
+         padding: 3px 0;
+         h2{
+            padding: 10px;
+            color: $default-color-aqua;
+         }
+         a{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+            color: $default-color-aqua;
+            padding: 10px;
+            transition: .3s;
+            &:hover{
+               background-color: $default-color-aqua;
+               color: $default-color-black;
+            }
+         }
+      }
+   }
+   &.active{
+      left: 0;
+   }
+}
