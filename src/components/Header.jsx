@@ -1,4 +1,3 @@
-import Navigation from './Navigation';
 import FormSearch from './FormSearch';
 
 import { Link } from 'react-router-dom';
@@ -11,10 +10,9 @@ const Header = ()=>(
             <div className="logo">
                <h1><Link to='/'><BiCameraMovie className='icon_menu'/> Movie<span>List</span></Link></h1>
             </div>
-            <Navigation/>
+            <FormSearch/>
          </div>
       </header>
-      <FormSearch/>
    </>
 )
 

@@ -1,0 +1,38 @@
+@import '../variables.scss', '../mixins.scss';
+.movie_info{
+   padding: 40px 0;
+   .container{
+      img{
+         max-width: 100%;
+         border: 2px solid $default-color-aqua;
+      }
+      .text{
+         color: $default-color-aqua;
+         h1{
+            font-size: 45px;
+            font-weight: $font-normal;
+            margin: 20px 0;
+         }
+         .info{
+            h2{
+               display: flex;
+               align-items: center;
+               gap: 5px;
+               margin-bottom: 10px;
+               font-weight: lighter;
+            }
+            p{
+               margin-bottom: 10px;
+               color: white;
+            }
+            &.description{
+               p{
+                  line-height: 30px;
+                  letter-spacing: 2px;
+                  font-size: 16px;
+               }
+            }
+         }
+      }
+   }
+}

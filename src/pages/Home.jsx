@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { CgFilm } from 'react-icons/cg';
+import '../styles/components/movieGrid.scss'
 
 import CardMovie from "../components/CardMovie";
+import Loading from '../components/Loading';
 
 const moviesURL = import.meta.env.VITE_API
 const apiKey = import.meta.env.VITE_API_KEY
@@ -24,10 +26,10 @@ const Home = () => {
       <section className="component">
          <div className="container">
             <h1><CgFilm className="icon_title"/>Top films</h1>
+            {topMovies.length == 0 && <Loading/>}
             <div className="container_card">
-               {topMovies === 0 && <p>Carregando...</p>}
                {topMovies.length > 0 && topMovies.map((movie) => (
-                  <CardMovie key={movie.title} movie={movie}/>
+                  <CardMovie key={movie.id} movie={movie}/>
                ))}
             </div>
          </div>

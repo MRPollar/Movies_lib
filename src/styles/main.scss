@@ -48,160 +48,46 @@ header{
             }
          }
       }
-      nav{
-         align-items: center;
+      form.search{
+         width: 50%;
          display: flex;
-         .toggleButton{
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            border: 0;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: transparent;
-            &::before,
-            &::after{
-               content: '';
-               position: absolute;
-               width: 85%;
-               height: 2px;
-               border-radius: 2px;
-               transition: .3s;
-            }
-            &::before{
-               transform: translateY(-5px);
-               background-color: aqua;
-            }
-            &::after{
-               transform: translateY(5px);
-               background-color: rgba(0, 255, 255, 0.511);
-            }
+         justify-content: right;
+         align-items: center;
+         position: relative;
+         gap: .5rem;
 
-            &.active{
-               &::before{
-                  transform: translateY(0) rotate(-135deg);
-               }
-               &::after{
-                  transform: translateY(0) rotate(135deg);
-                  background-color: aqua;
-               }
-            }
+         input[type=text],
+         button{
+            padding: 5px 10px;
          }
-         ul{
+
+         input[type=text]{
             width: 100%;
-            max-width: 400px;
-            padding: 15px 2px 30px 2px;
-            position: absolute;
-            right: -400px;
-            top: 61.5px;
+            max-width: 350px;
+            outline: none;
+            color: $default-color-aqua-opaco;
+            background-color: transparent;
+            border: 0;
+            border-bottom: 1px solid $default-color-aqua;
+            &::placeholder{
+               color: $default-color-aqua;
+            }
+         }
+         button{
+            border: 1px solid $default-color-aqua;
+            color: $default-color-aqua;
             background-color: $default-color-black;
-            border: 2px solid $default-color-aqua;
-            border-right: 0;
+            cursor: pointer;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
             transition: .3s;
-            list-style-type: none;
-            .header_menu{
-               padding: 15px 13px;
-               h1{
-                  color: $default-color-aqua;
-                  font-weight: $font-normal;
-                  text-decoration: none;
-                  span{
-                     font-weight: $font-bold;
-                  }
-               }
-            }
-            li{
-               padding: 10px 0;
-               a{
-                  display: block;
-                  text-decoration: none;
-                  padding: 3px 13px;
-                  transition: .3s;
-                  border-radius: 10px;
-                  color: $default-color-aqua;
-                  transition: .2s;
-               }
-            }
-            &.active{
-               right: 0;
+            &:hover{
+               color: $default-color-black;
+               background-color: $default-color-aqua;
             }
          }
       }
    }
 }
 
-.search{
-   padding: 15px 0;
-   .container{
-      background-color: $default-color-black;
-      padding: 15px 2%;
-      display: flex;
-      align-items: center;
-      border-radius: 5px;
-      .icon_search{
-         color: $default-color-black;
-         padding: 5px;
-         width: 30px;
-         height: 30px;
-         border-radius: 50%;
-         background-color: $default-color-aqua;
-         margin-right: 10px;
-      }
-      button,
-      input[type=text]{
-         padding: 5px 10px;
-         font-size: 16px;
-         outline: none;
-         border-radius: 10px;
-      }
-      input[type=text]{
-         width: 100%;
-         max-width: 300px;
-         margin-right: 10px;
-         border: 0;
-      }
-      button{
-         cursor: pointer;
-         background-color: $default-color-black;
-         color: $default-color-aqua;
-         border: 1px solid $default-color-aqua;
-      }
-   }
-}
-
-section.component{
-   padding: 40px 0;
-   .container{
-      >h1{
-         display: flex;
-         align-items: center;
-         color: $default-color-aqua;
-         font-weight: $font-normal;
-         margin-bottom: 30px;
-         .icon_title{
-            margin-right: 10px;
-         }
-      }
-      .container_card{
-         display: grid;
-         grid-template-columns: auto auto;
-         gap: 40px;
-         .card{
-            img{
-              width: 100%;
-              max-height: 800px;
-              object-fit: cover;
-            }
-            .text{
-               width: 100%;
-               padding: 15px;
-               h1{
-                  display: block;
-               }
-            }
-         }
-      }
-   }
-}
