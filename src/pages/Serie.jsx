@@ -22,7 +22,6 @@ const Movie = () => {
    const getmoviedata = async (url) => {
       const req = await fetch(url);
       const res = await req.json();
-      console.log(res);
       setSerie(res);
    }
    useEffect(() => {

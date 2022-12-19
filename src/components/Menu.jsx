@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { AiOutlineHome, AiOutlineStar, AiOutlineCheckCircle } from 'react-icons/ai';
+import { AiOutlineHome, AiOutlineStar } from 'react-icons/ai';
+import { MdOutlineUpcoming } from 'react-icons/md';
 
 import '../styles/components/menu.scss';
 
@@ -20,10 +21,11 @@ const Menu = () => {
                <li><Link to="/" onClick={menuActive}><AiOutlineHome/>Home</Link></li>
                <li><h2>Movie</h2></li>
                <li><Link to="movies/popular/1" onClick={menuActive}><AiOutlineStar/>Popular</Link></li>
-               <li><Link to="movies/recent/1" onClick={menuActive}><AiOutlineCheckCircle/>Most recent</Link></li>
+               <li><Link to="movies/upcoming/1" onClick={menuActive}><MdOutlineUpcoming/>Upcoming</Link></li>
                <li><h2>TV</h2></li>
                <li><Link to="series/popular/1" onClick={menuActive}><AiOutlineStar/>Popular</Link></li>
-               <li><Link to="series/recent/1" onClick={menuActive}><AiOutlineCheckCircle/>Most recent</Link></li>
+               <li><h2>Genres</h2></li>
+               <li><Link to="/genre/acao">Ação</Link></li>
             </ul>
          </nav>
       </>

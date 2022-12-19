@@ -8,10 +8,19 @@
 }
 
 html,
-body{
+body
+#root{
    height: 100%;
    background-color: $default-color-black-opaco;
-   overflow-x: hidden;
+}
+
+body{
+   position: relative;
+}
+
+main{
+   height: 100%;
+   padding-bottom: 60px;
 }
 
 .container{
@@ -25,6 +34,7 @@ header{
    background-color: $default-color-black;
    border-bottom: 2px solid $default-color-aqua;
    position: relative;
+   z-index: 1000;
    padding: 10px 0;
    .container{
       display: flex;

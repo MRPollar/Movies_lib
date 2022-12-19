@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { BsStarFill } from 'react-icons/bs';
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 import { useParams, useNavigate } from 'react-router-dom';
 
 import '../styles/components/movieGrid.scss'
 
 import CardMovie from '../components/CardMovie';
+import Pagination from '../components/Pagination';
 import Loading from '../components/Loading';
 
 const apiURL = import.meta.env.VITE_API;
@@ -14,6 +14,7 @@ const apiKey = import.meta.env.VITE_API_KEY;
 const PopularM = () => {
    const numPage = useParams().page;
    const navigate = useNavigate();
+   const init_card = document.getElementById("#init_card");
 
    const [popular, setPopular] = useState([]);
    const [page, setPage] = useState(numPage)
@@ -35,15 +36,17 @@ const PopularM = () => {
       getPopularMovies(mountUrl);
    },[page]);
 
-   const nextPage = () => {
+   const nextPage = (e) => {
+      e.preventDefault();
       if(page < totalPages) navigate(`/movies/popular/${page + 1}`);
    }
-   const previousPage = () => {
+   const previousPage = (e) => {
+      e.preventDefault();
       if(page > 1) navigate(`/movies/popular/${page - 1}`);
    }
 
    return(
-      <section className="component">
+      <section className="component" id="init_card">
          <div className="container">
             <h1><BsStarFill className="icon_title"/>Popular movies</h1>
             {popular.length === 0 && <Loading/>}
@@ -52,11 +55,11 @@ const PopularM = () => {
                   <CardMovie key={movie.id} movie={movie}/>
                ))}
             </div>
-            <div className='page' style={{color:'white'}}>
-               <button className='button' onClick={previousPage}><AiOutlineArrowLeft/></button>
-               <div className='page_count'>{page}</div>
-               <button className='button' onClick={nextPage}><AiOutlineArrowRight/></button>
-            </div>
+            <Pagination
+               previous={previousPage}
+               next={nextPage}
+               page={page}
+            />
          </div>
       </section>
    )

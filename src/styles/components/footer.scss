@@ -1,5 +1,9 @@
 @import '../variables.scss', '../mixins.scss';
 footer{
+   width: 100%;
+   position: absolute;
+   bottom: 0;
+   left: 0;
    padding: 20px;
    background-color: $default-color-black;
    border-top: 2px solid $default-color-aqua;

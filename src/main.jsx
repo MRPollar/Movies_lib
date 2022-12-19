@@ -9,6 +9,9 @@ import Serie from './pages/Serie';
 import Search from './pages/Search';
 import PopularM from './pages/PopularM';
 import PopularS from './pages/PopularS';
+import UpcomingMovie from './pages/UpcomingMovie';
+import Genres from './pages/Genres';
+import Error from './pages/Error';
 import './styles/main.scss'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -20,8 +23,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path='/movie/:id' element={<Movie/>}/>
           <Route path='/serie/:id' element={<Serie/>}/>
           <Route path='/search' element={<Search/>}/>
-          <Route path="movies/popular/:page" element={<PopularM/>}/>
-          <Route path="series/popular/:page" element={<PopularS/>}/>
+          <Route path="/movies/popular/:page" element={<PopularM/>}/>
+          <Route path="/series/popular/:page" element={<PopularS/>}/>
+          <Route path="/movies/upcoming/:page" element={<UpcomingMovie/>}/>
+          <Route path="/genre/:Category"/>
+          <Route path='*' element={<Error/>}/>
         </Route>
       </Routes>
     </Router>

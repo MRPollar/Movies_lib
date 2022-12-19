@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { BsStarFill } from 'react-icons/bs';
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 import { useParams, useNavigate } from 'react-router-dom';
 
 import '../styles/components/movieGrid.scss'
 
 import CardSerie from '../components/CardSerie';
+import Pagination from '../components/Pagination';
 import Loading from '../components/Loading';
 
 const apiURL = import.meta.env.VITE_API_TV;
@@ -35,28 +35,30 @@ const PopularS = () => {
       getPopularMovies(mountUrl);
    },[page]);
 
-   const nextPage = () => {
+   const nextPage = (e) => {
+      e.preventDefault();
       if(page < totalPages) navigate(`/series/popular/${page + 1}`);
    }
-   const previousPage = () => {
+   const previousPage = (e) => {
+      e.preventDefault();
       if(page > 1) navigate(`/series/popular/${page - 1}`);
    }
 
    return(
       <section className="component">
          <div className="container">
-            <h1><BsStarFill className="icon_title"/>Popular series</h1>
+            <h1><BsStarFill className="icon_title"/>Popular TV</h1>
             {popular.length === 0 && <Loading/>}
-            <div className='container_card'>
-               {popular.length > 0 && popular.map(serie => (
+            {popular.length > 0 && <div className='container_card'>
+               {popular.map(serie => (
                   <CardSerie key={serie.id} serie={serie}/>
                ))}
-            </div>
-            <div className='page' style={{color:'white'}}>
-               <button className='button' onClick={previousPage}><AiOutlineArrowLeft/></button>
-               <div className='page_count'>{page}</div>
-               <button className='button' onClick={nextPage}><AiOutlineArrowRight/></button>
-            </div>
+            </div>}
+            <Pagination
+               previous={previousPage}
+               next={nextPage}
+               page={page}
+            />
          </div>
       </section>
    )
