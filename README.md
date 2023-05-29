@@ -34,10 +34,10 @@ npm install
 ```
 ### 🛠️ contruido com
 
-* [Vite](https://vitejs.dev/){target="_blank"}
-* [React](https://pt-br.reactjs.org/){target="_blank"}
-* [Sass](https://sass-lang.com/){target="_blank"}
-* [TMDB_API](https://developers.themoviedb.org/3/getting-started/introduction){target="_blank"}
+* [Vite](https://vitejs.dev/)
+* [React](https://pt-br.reactjs.org/)
+* [Sass](https://sass-lang.com/?target=_blank)
+* [TMDB_API](https://developers.themoviedb.org/3/getting-started/introduction)
 
 ## 📄 Licença
 Este projeto está sob licença MIT - veja o arquivo [LICENCE](https://github.com/MRPollar/Movies_lib/blob/adc1e19ba5096f1ed9e444f78ac22ca885c34759/LICENSE)
